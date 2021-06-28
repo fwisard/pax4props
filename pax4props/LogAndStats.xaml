@@ -1,0 +1,58 @@
+﻿<Window x:Class="pax4props.LogAndStats"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:pax4props"
+        mc:Ignorable="d"
+        Title="Log and stats" Height="480" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+
+            <RowDefinition Height="8*" />
+        </Grid.RowDefinitions>
+        <Label Content="Best score:" Grid.Row="1" HorizontalAlignment="Right"/>
+        <Label x:Name="lblBScore" Content="0" Grid.Row="1" Grid.Column="1" />
+        <Label Content="Best landing rate:" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right"/>
+        <Label x:Name="lblBLanding" Content="0" Grid.Row="1" Grid.Column="3" />
+        <Label Content="Satisfied PAX:" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Right"/>
+        <Label x:Name="lblSatisfied" Content="0/0" Grid.Row="1" Grid.Column="5" />
+        <Label Content="Last log entries (most recent first):"  Grid.Row="2" Grid.ColumnSpan="6" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+        <Grid MinWidth="600" MinHeight="300" Margin="20,40,20,20" Grid.ColumnSpan="6" Grid.Row="2">
+            
+            <DataGrid AutoGenerateColumns="False" Name="dataGrid1" Height="300">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="30" Binding="{Binding rowid}" />
+                <DataGridTextColumn Header="Date" Width="100" Binding="{Binding TimeLog}"/>
+                <DataGridTextColumn Header="PAX" Width="30" Binding="{Binding Pax}" />
+                    <DataGridTextColumn Header="Type" Width="60" Binding="{Binding FlightType}" />
+                    <DataGridTextColumn Header="Score" Width="50" Binding="{Binding Score, StringFormat={}{0:F1}}" />
+                <DataGridTextColumn Header="Landing" Width="60" Binding="{Binding MaxFpm, StringFormat={}{0:F1}}" />
+                <DataGridTextColumn Header="Remarks" Width="300" Binding="{Binding Remarks}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        </Grid>
+    </Grid>
+</Window>
+<!-- 
+     TimeLog TEXT PRIMARY KEY NOT NULL,
+                    Pax INT NOT NULL,
+                    FlightType TEXT NOT NULL,
+                    Score REAL NOT NULL,
+                    Remarks TEXT,
+                    BankS INT, BankP REAL, PitchS INT, PitchP REAL, ClimbS INT, ClimbP REAL,
+                    DescentS INT, DescentP REAL, LowS INT, LowP REAL, OxygenS INT, OxygenP REAL,
+                    LandingS INT, LandingP REAL, NoiseS INT, NoiseP REAL, GForceS INT, GForceP REAL,
+                    BumpsS INT, BumpsP REAL,
+                    MaxFpm REAL );";
+    -->

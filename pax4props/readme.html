@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>readme</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<p><img src="./colorlogo.png" /></p>
+<h1 id="pax4props-beta">pax4props BETA</h1>
+<p>The software is still in beta phase and contains too many bugs to be considered safe for wider release. With your help however, it will soon be very enjoyable for the greater public.</p>
+<h2 id="vision-and-goal">Vision and goal</h2>
+<p>pax4props’ goal is to provide a simple passenger simulation to the unpressurized propeller aircrafts (piston and turboprops). The few existing PAX simulators out there focus on larger planes, with flight attendants and onboard entertainment, while pax4props will focus on the General Aviation and small commuters aircrafts.</p>
+<p>pax4props will track your virtual passengers’ stress levels and rank your flight according to that. For those who might not know, “PAX” is aviation jargon and means “passengers”.</p>
+<h3 id="the-core-principles">The core principles</h3>
+<ol type="1">
+<li><strong>No money.</strong> No economic simulation. You won’t earn nor spend nor even hear about money in pax4props. And of course, no real life money involved, not even donations.</li>
+<li><strong>No locked content.</strong> No career progression. You can fly whatever suitable plane you own, no matter your skills, training, or lack thereof.</li>
+<li><strong>No mandatory missions/framing.</strong> Compatibility with virtual airlines, online ATC, role-play scenarios, bush trips… It also means the passengers won’t be detailed too much. Ideally, the voices should be neutral/compatible with all ages, cultures and genders. I won’t assume much about your PAX.</li>
+<li><strong>Simplicity.</strong> No complex setup. No tedious steps. Ideally, just hop on the plane and fly. Lightweight UI.</li>
+<li><strong>Low FPS impact.</strong></li>
+<li><strong>No internet required.</strong> I <em>might</em> implement opt-in “automatically check for updates” for your convenience if there’s demand for it, but I’m not fond of the idea as it could be a privacy concern. I don’t want your data. Also, obviously, no ads.</li>
+</ol>
+<p>I guess it all could be summarized as <strong>“As free as possible”</strong>.</p>
+<h3 id="the-passengers-comfort">The passengers’ comfort</h3>
+<p>Everybody (in the real world) reacts differently based on their psychology and physiology. pax4props’ passengers on the other have much less variance in their needs.</p>
+<ol type="1">
+<li><p><strong>Takeoffs and landing are stressful</strong>. Always. Your PAX want the shortest amount of time when flying close to the ground.</p></li>
+<li><p><strong>Taxiing fast is scary and uncomfortable</strong>. And that includes take-off and landing rolls.</p></li>
+<li><p><strong>High climb rates are uncomfortable</strong>. Ears and stomach feel weird.</p></li>
+<li><p><strong>High descent rates are uncomfortable AND scary</strong>.</p></li>
+<li><p><strong>Steep turns are uncomfortable</strong> and scary. Watch your bank angle.</p></li>
+<li><p><strong>Noise is uncomfortable</strong>. It’s hard to simulate noise accurately in MSFS, so your PAX’ sensitivity may vary from plane to plane, but the key thing is to not let the propellers turn too fast. And no, they don’t have hearing protection devices (you’re the only one with a headset).</p></li>
+<li><p><strong>Hypoxemia is scary</strong>. Not incomfortable per se, but your PAX won’t tolerate high altitudes, especially if they’re on a regular flight and not on a bush trip. Your aircraft is unpressurized and you have no supplemental oxygen for your PAX. Stay under 8000 ft AMSL for maximum safety and comfort.</p></li>
+<li><p><strong>Turbulence is uncomfortable</strong>. PAX want smooth flights. Be gentle on the yoke/stick and try not to fly into turbulence.</p></li>
+<li><p><strong>Sightseeing is soothing</strong>. Due to MSFS limitations, it’s unfortunately not possible to take into account the visibility conditions, so your PAX will be amazed at the scenery as soon as you hit 1500 ft AGL.</p></li>
+<li><p><strong>Steep pitch is uncomfortable</strong>. Don’t pitch too much even when it wouldn’t otherwise impact your vertical velocity.</p></li>
+<li><p><strong>Hard landings are uncomfortable</strong>, and rebounds too. On the other hand, keep in mind the first point on this list; a very long smooth landing could net you a worst review than a harder but shorter landing.</p></li>
+<li><p><strong>Emergencies are a mixed bag</strong>. And a pain to track and rate efficiently in MSFS. At the moment, they have no impact on your passengers. Sure, an engine fire is stressful, but surviving it is such a relief that it kind of balances out.</p></li>
+<li><p><strong>Crashing is uncool</strong>. No “reward” for crashing, no death count, the flight will just stop being tracked and no report will be shown.</p></li>
+<li><p><strong>PAX aren’t aware of everything</strong>. They don’t care for delays, they don’t care if you don’t follow ATC’s instructions, they don’t know you have only 5 minutes of fuel left, they don’t fear approaching storms, they don’t care for lights… Implementing some of those would make the simulation way too complex and less compatible with other software.</p></li>
+<li><p><strong>PAX are smart:</strong> they always wear their seatbelts, no matter what cockpit switch you flip or not. Smart or overly anxious, your call.</p></li>
+<li><p><strong>PAX are resentful</strong>. They won’t forget any mistake you made, and once they’ve panicked they won’t bother you with mundane concerns anymore. At least until next flight. Perhaps they’re not <em>that</em> resentful, as they might just forgive you and give you another chance later.</p></li>
+<li><p><strong>No parachuting… yet?</strong> Your PAX expect to land WITH the plane. You could interrupt the flight while still in mid-air but landings are a big part of the evaluation process and as such it could impact negatively your experience. Will probably implemented in a future update, though.</p></li>
+</ol>
+<p>Your average city-dwellers are more sensitive than bush trip travelers on some of those points. The number of passengers also has an influence on some.</p>
+<h2 id="installation">Installation</h2>
+<p>Just run the installer. pax4props doesn’t need to be installed in your Community folder (and it might even have a negative impact if you do install it there).</p>
+<h2 id="usage">Usage</h2>
+<ol type="1">
+<li><p>Launch pax4props and MSFS (the order shouldn’t matter).</p></li>
+<li><p>Set the number of passengers on board, both in pax4props and MSFS. Weight doesn’t have an influence. For reference, Wikipedia states that <em>“Average adult human weight varies by continent from about 60 kg (130 lb) in Asia and Africa to about 80 kg (180 lb) in North America, with men on average weighing more than women.”</em></p></li>
+<li><p>Choose between regular flight and bush trip. Regular allows higher scores but require more finesse. “Bush PAX” are more resilient, but the harsh conditions take a toll on their morale. You should definitely consider selecting it when flying to or from high altitudes airports, though. Selecting “Bush trip” but flying from and to long runways with easy departures and approaches could be seen as cheating but who am I to judge you?</p></li>
+<li><p>When the plane is ready and not already airborne, click the “Start flight” button and fly.</p></li>
+<li><p>When you have landed (preferably after taxiing to the ramp/parking/gate, click on “End flight” and read the flight report.</p></li>
+</ol>
+<p>The number of passengers and type of flight are saved between sessions for an even shorter/lazier setup.</p>
+<p>No interaction is needed during the flight. You might hear them voice their concern or awe. You can also check their current status/mood by alt-tabbing to the pax4props window during flight. There’s no plan to implement a permanent visual overlay, for realism purposes: checking on them is a distraction and a possible danger. Focus on your flying. They will let you know when they’re really scared or angry.</p>
+<h2 id="roadmap">Roadmap</h2>
+<p>Planned features, without any guarantee or timeline:</p>
+<ol type="1">
+<li>Saving the results for later review.</li>
+<li>Profiles</li>
+<li>Statistics</li>
+<li>Export data</li>
+<li>Parachuting (for the passengers only. You will have to stay on board).</li>
+<li>Helicopters?</li>
+<li>URGENT: group voices</li>
+<li>more voiced reactions?</li>
+<li>Automatic detection of PAX aboard plane. Might not always work for some third-party aircraft though.</li>
+</ol>
+<h2 id="customization">Customization</h2>
+<p>You may add new sounds (or completely replace the ones provided with the software) in the “sounds” directory. The following conventions are used: the letters represent the type of sound (“wow”, “complain”, “panic”), the number represents the number of passengers implied (currently only “1” is supported, plans are: “3” for a small group and “9” for a larger one), followed by a dash and then a unique identifier.</p>
+<h2 id="credits">Credits</h2>
+<ul>
+<li><p>Based on <a href="https://github.com/bertrandpsi/minisimconnect">minisimconnect</a> by bertrandpsi.</p></li>
+<li><p>Panic screams by <a href="https://freesound.org/people/Volonda/">Volonda</a>.</p></li>
+<li><p>Additional code and art by fwisard.</p></li>
+</ul>
+<h2 id="licensing">Licensing</h2>
+<p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with this program. If not, see <a href="https://www.gnu.org/licenses/" class="uri">https://www.gnu.org/licenses/</a>.</p>
+</body>
+</html>

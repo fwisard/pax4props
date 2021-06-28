@@ -1,0 +1,84 @@
+﻿<Window x:Class="pax4props.FlightReport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:pax4props"
+        mc:Ignorable="d"
+        Title="Flight report" Height="800" Width="526" Margin="0" MinHeight="800" MinWidth="500" Closing="Window_Closing">
+        <Grid Background="White" Margin="20,30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" MinWidth="100" />
+                    <ColumnDefinition Width="3*" />
+
+                </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" MinHeight="120"/>
+                <RowDefinition Height="3*" MinHeight="300"/>
+                <RowDefinition Height="1.6*" MinHeight="150"/>
+                <RowDefinition Height="0.5*" MinHeight="60"/>
+                <RowDefinition Height="0.2*" MinHeight="30"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" MinWidth="100" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+            <Border BorderBrush="Black" BorderThickness="0,1,1,1" SnapsToDevicePixels="True"/>
+            <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0,1,1,1" SnapsToDevicePixels="True" />
+
+            <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0,0,1,1" SnapsToDevicePixels="True" />
+
+            <Label Content="Flight report #" Margin="4,4,0,0" FontFamily="Cambria" Foreground="Black" HorizontalAlignment="Right"/>
+            <Label x:Name="lblFlightReportNr" Grid.Column="1" Content="0000000000" HorizontalAlignment="Right" FontFamily="Courier New" />
+            <Label Content="Rating:" Grid.Row="1" HorizontalAlignment="Right"  VerticalAlignment="Top" Margin="4,12,0,0" FontFamily="Cambria" Foreground="Black"/>
+            <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="0,0,1,1" SnapsToDevicePixels="True" >
+
+                    <TextBlock x:Name="tbStars" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontFamily="Cambria" FontSize="36"  FontWeight="Bold" Margin="8,8,0,0" Foreground="#FFA80A0A" RenderTransformOrigin="0.5,0.5">
+                    
+                </TextBlock>
+            </Border>
+                <TextBlock x:Name="tbSummary" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Bottom" FontWeight="Bold" FontFamily="Courier New" HorizontalAlignment="Left" Margin="4,0,0,4" Foreground="#EE000000"><Run Text="TextBlock"/></TextBlock>
+                
+            </Grid>
+        <Border BorderBrush="Black" BorderThickness="1,1,1,1" SnapsToDevicePixels="True" />
+
+        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1,0,1,1" SnapsToDevicePixels="True"  />
+        <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1,0,1,1" SnapsToDevicePixels="True" />
+        <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="0,0,1,1" SnapsToDevicePixels="True" />
+        <Border Grid.Row="2" Grid.Column="1" BorderBrush="Black" BorderThickness="0,0,1,1" SnapsToDevicePixels="True" />
+        <Border Grid.Row="3" Grid.Column="0" BorderBrush="Black" BorderThickness="1,0,1,1" SnapsToDevicePixels="True" />
+        <Border Grid.Row="3" Grid.Column="1" BorderBrush="Black" BorderThickness="0,0,1,1" SnapsToDevicePixels="True" />
+        <Border Grid.Row="4" Grid.Column="0" BorderBrush="Black" BorderThickness="1,0,1,1" SnapsToDevicePixels="True" />
+        <Border Grid.Row="4" Grid.Column="1" BorderBrush="Black" BorderThickness="0,0,1,1" SnapsToDevicePixels="True" />    
+            
+        <TextBlock x:Name="tbReportDetails" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Padding="4" FontFamily="Courier New" Margin="4,4,0,0" Foreground="#EE000000"/>
+            <TextBlock x:Name="tbQuotes" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontFamily="Courier New" Padding="4" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="4,4,0,0" Foreground="#EE000000"/>
+        <Label Content="PAX quotes:&#xA;" Grid.Row="2" FontFamily="Cambria" HorizontalAlignment="Right" VerticalAlignment="Top" Padding="4,0" Background="{x:Null}" Margin="4,4,0,0" Foreground="Black"/>
+        <Label Content="Official report:" Grid.Row="1" FontFamily="Cambria" HorizontalAlignment="Right"  VerticalAlignment="Top" Padding="4,0" ScrollViewer.CanContentScroll="True" Background="{x:Null}" Margin="4,4,0,0" Foreground="Black"/>
+            <Image HorizontalAlignment="Center" Height="105" VerticalAlignment="Center" Width="106" Source="circlelogo106.png"/>
+        <Grid Grid.Row="4" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,1,0" SnapsToDevicePixels="True" />
+            <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0,0,1,0" SnapsToDevicePixels="True" />
+            <Label Content="PAX:" Grid.Column="1" FontFamily="Cambria" HorizontalAlignment="Right"  VerticalAlignment="Top" Padding="4,0" ScrollViewer.CanContentScroll="True" Background="{x:Null}" Margin="4,4,0,0" Foreground="Black"/>
+            <TextBlock x:Name="tbFlightType" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Padding="4" FontFamily="Courier New" Margin="4,4,0,0" Foreground="#EE000000"/>
+            <TextBlock x:Name="tbPAX"  Grid.Column="2" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Padding="4" FontFamily="Courier New" Margin="4,4,0,0" Foreground="#EE000000"/>
+
+
+        </Grid>
+        <Label Content="Pilot's remarks:" Grid.Row="3" FontFamily="Cambria" HorizontalAlignment="Right" VerticalAlignment="Top" Padding="4,0" Background="{x:Null}" Margin="4,4,0,0" Foreground="Black"/>
+            
+        <Label Content="Flight type:" Grid.Row="4" FontFamily="Cambria" HorizontalAlignment="Right"  VerticalAlignment="Top" Padding="4,0" ScrollViewer.CanContentScroll="True" Background="{x:Null}" Margin="4,4,0,0" Foreground="Black"/>
+        <TextBox x:Name="tbxRemarks" Grid.Column="1" HorizontalAlignment="Left" Height="23" Grid.Row="3" BorderThickness="0" TextWrapping="Wrap" Text="" MinWidth="320" MinLines="2" MinHeight="50" VerticalAlignment="Top" Padding="4" FontFamily="Courier New" Margin="4,4,0,0" Foreground="#EE000000"/>
+
+    </Grid>
+</Window>

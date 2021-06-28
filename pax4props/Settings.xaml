@@ -1,0 +1,20 @@
+﻿<Window x:Class="pax4props.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:pax4props"
+        mc:Ignorable="d"
+        Title="Settings" Height="450" Width="450" Closing="Window_Closing">
+    <Grid>
+        <Slider x:Name="sldrSoloSndVol" HorizontalAlignment="Left" Margin="170,60,0,0" VerticalAlignment="Top" Width="200" Maximum="100" Value="50" SmallChange="1" AutoToolTipPlacement="TopLeft" TickFrequency="5" LargeChange="5"/>
+        <Label Content="Solo voices volume:" HorizontalAlignment="Left" Margin="30,52,0,0" VerticalAlignment="Top"/>
+
+        <Slider x:Name="sldrGroupSndVol" HorizontalAlignment="Left" Margin="170,90,0,0" VerticalAlignment="Top" Width="200" Maximum="100" Value="50" SmallChange="1" AutoToolTipPlacement="TopLeft" TickFrequency="5" LargeChange="5"/>
+        <Label Content="Group voices volume:" HorizontalAlignment="Left" Margin="30,82,0,0" VerticalAlignment="Top"/>
+        
+        <CheckBox x:Name="cbCheckForUpdates" Content="Check for updates online." HorizontalAlignment="Left" Margin="30,175,0,0" VerticalAlignment="Top" ToolTip="Check once at launch, minimal data transfer" IsChecked="True"/>
+        <Label Content="Changes will take effect the next time you launch pax4props." HorizontalAlignment="Left" Margin="30,340,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
