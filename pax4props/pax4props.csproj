@@ -255,6 +255,7 @@
 xcopy "C:\MSFS SDK\Samples\SimvarWatcher\SimConnect.cfg" "$(TargetDir)" /y
 xcopy "E:\source\pax4props\pax4props\sounds" "$(TargetDir)\sounds" /y /s /I
 xcopy "E:\source\pax4props\pax4props\readme.md" "$(TargetDir)" /y
+xcopy "E:\source\pax4props\pax4props\readme.md" "E:\source\pax4props\" /y
 xcopy "$(ProjectDir)COPYING" "$(TargetDir)" /y
 xcopy "$(ProjectDir)readme.html" "$(TargetDir)" /y
 xcopy "$(ProjectDir)*.png" "$(TargetDir)" /y
