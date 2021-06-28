@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <item>
-    <version>0.96.1</version>
+    <version>0.96.2</version>
     <url>https://github.com/fwisard/pax4props/releases/latest/download/pax4props.zip</url>
     <changelog>https://github.com/ravibpatel/AutoUpdater.NET/releases</changelog>
     <mandatory>false</mandatory>
