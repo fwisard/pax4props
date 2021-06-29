@@ -49,6 +49,13 @@ namespace pax4props
 #else
         const string _name = "log.db";
 #endif
+        public static void init()
+        {
+            if (! File.Exists($@"{SaveDir}\{_name}"))
+            {
+                Directory.CreateDirectory(SaveDir);
+            }
+        }
         public static SQLiteConnection conn = new SQLiteConnection($@"Data Source={SaveDir}\{_name};Compress=True;");
 
     }
@@ -255,6 +262,7 @@ namespace pax4props
             
             try
             {
+                db.init();
                 db.conn.Open();
                 SQLiteCommand cmd = new SQLiteCommand(db.conn);
                 cmd.CommandText = @"create table if not exists Log (

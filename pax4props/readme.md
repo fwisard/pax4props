@@ -12,7 +12,7 @@ pax4props' goal is to provide a simple passenger simulation to the unpressurized
 The few existing PAX simulators out there focus on larger planes, with flight attendants and onboard entertainment, while
 pax4props will focus on the General Aviation and small commuters aircrafts.
 
-pax4props will track your virtual passengers' stress levels and rank your flight according to that. 
+pax4props will track your virtual passengers' stress levels and rank your flight according to that. Hear them complain when they don't like your flying, hear them scream when they panic.
 
 For those who might not know, "PAX" is aviation jargon
 and means "passengers".
