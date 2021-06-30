@@ -98,7 +98,9 @@ namespace pax4props
             "It was way too loud.", "Not comfortable AT ALL", "What a racket!", "Unbearingly noisy", "My ears still hurt from all that noise", "Are they supposed to be that loud?",
             "Deafening", "Oh that noise was something", "Ears still ringing", "Pretty sure this flight permanently damaged my hearing.", "My ears!", "Too noisy",
             "Very loud environment", "The noise was very uncomfortable", "SO LOUD", "high noise levels", "louder than any concert I've been to", 
-            "Wish I had some kind of hearing protection.", "My ears are buzzing", "I have tinnitus now"
+            "Wish I had some kind of hearing protection.", "My ears are buzzing", "I have tinnitus now", "That noise killed me", "Loudest aircraft ever!",
+            "Only for deaf people or those wishing to be one", "Are all planes supposed to be that loud?", "Painfully loud", "Ear-splitting",
+            "Not quiet enough", "Suffered from the very high noise levels."
         };
 
         
