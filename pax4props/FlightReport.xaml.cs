@@ -377,4 +377,3 @@ namespace pax4props
         }
     }
 }
-//TODO: low scores due to excessive noise should not terrify

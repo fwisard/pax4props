@@ -32,11 +32,15 @@ namespace pax4props
         {
             db.conn.Open();
             SQLiteCommand cmd = new SQLiteCommand("select Score from Log where Score = (select max(Score) from Log)", db.conn);
-            lblBScore.Content = cmd.ExecuteScalar();
-            cmd.CommandText = "select MaxFpm from Log where MaxFpm = (select min(MaxFpm) from Log)";
-            lblBLanding.Content = cmd.ExecuteScalar();
-            cmd.CommandText = "select sum(Pax) from Log";
             var _res = cmd.ExecuteScalar();
+            lblBScore.Content = $"{_res:F1}";
+
+            cmd.CommandText = "select MaxFpm from Log where MaxFpm = (select min(MaxFpm) from Log)";
+            _res = cmd.ExecuteScalar();
+            lblBLanding.Content = $"{_res:F1}";
+
+            cmd.CommandText = "select sum(Pax) from Log";
+            _res = cmd.ExecuteScalar();
             int _pax;
             int _satisfied;
             float _pct;
