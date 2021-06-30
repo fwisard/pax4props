@@ -114,7 +114,7 @@ namespace pax4props
         };
 
         readonly string[] GoodMood = { "happy.", "enthusiastic.", "fine.", "in a good mood.", "cheerful.", "calm.", "relaxed.", "lighthearted." };
-        readonly string[] MehMood = { "bored.", "OK.", "neutral.", "absorbed.", "pensive.", "withdrawn." };
+        readonly string[] MehMood = { "bored.", "OK.", "neutral.", "absorbed.", "pensive.", "withdrawn.", "absent." };
         readonly string[] BadMood = { "tired.", "twitchy.", "angry.", "tense.", "worried.", "bothered.", "concerned." };
         public float MaxLandingFPM = 0;
         public float LandingFPM = 0;
@@ -344,7 +344,7 @@ namespace pax4props
             AutoUpdater.HttpUserAgent = "pax4props AutoUpdater";
             if (Properties.Settings.Default.CheckForUpdates.Equals(true))
             {
-                AutoUpdater.Start("http://github.com/fwisard/pax4props/updater.xml"); 
+                AutoUpdater.Start("http://github.com/fwisard/pax4props/pax4props/updater.xml"); 
             }
 
 #if DEBUG
