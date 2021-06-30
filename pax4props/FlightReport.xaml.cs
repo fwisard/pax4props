@@ -21,7 +21,7 @@ namespace pax4props
     /// </summary>
     public partial class FlightReport : Window
     {
-        public string[] Summary = { "ERROR", "Terrifying", "Bad", "OK", "Good", "Very smooth"};
+        public string[] Summary = { "ERROR", "Unprofessional", "Uncomfortable", "OK", "Good", "Excellent"};
         public int NumberOfStars = 0;
         private readonly Random Rnd = new Random();
 
@@ -283,13 +283,13 @@ namespace pax4props
                     {
                         tbQuotes.Text += BadLanding[Rnd.Next(0, BadLanding.Length)];
                     }
-                    else if (ComplainingAbout["noise"][0] > 240 && Rnd.Next(100) < 20) //240 instead of 300 because some PAX have lower limits than others.
+                    else if (ComplainingAbout["noise"][0] > 240 && Discomfort - ComplainingAbout["noise"][1] < 25) //240 instead of 300 because some PAX have lower limits than others.
                     {
                         tbQuotes.Text += BadNoise[Rnd.Next(0, BadNoise.Length)];
                     }
                     else
                     {
-                        tbQuotes.Text = BadReview[Rnd.Next(0, BadReview.Length)];
+                        tbQuotes.Text += BadReview[Rnd.Next(0, BadReview.Length)];
                     }
                     tbQuotes.Text += Signature() + "\n";
 
@@ -377,3 +377,4 @@ namespace pax4props
         }
     }
 }
+//TODO: low scores due to excessive noise should not terrify
