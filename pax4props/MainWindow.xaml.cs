@@ -150,10 +150,10 @@ namespace pax4props
         private int VSDownLimit2 = -1600;
         private int VSUpLimit = 1250;
         private readonly string BaseDir = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-       // private readonly string SaveDir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\pax4props";
         private MediaPlayer CurrentVoice = new MediaPlayer();
         private readonly MediaPlayer UISound = new MediaPlayer();
         private bool bOnlyConcerned = true;
+        private int Nausea = 0;
 
         //TODO: Simrates?
 
@@ -289,7 +289,7 @@ namespace pax4props
             
             if (Properties.Settings.Default.Bush)
             {
-                CbBush.IsChecked = true; //TODO: maybe rename as Waiver
+                CbBush.IsChecked = true; 
                 imgFlight.Source = new BitmapImage(new Uri($@"{BaseDir}\bushflight.png"));
             }
             else
@@ -439,10 +439,12 @@ namespace pax4props
                     else if (StressPeak == 1)
                     {
                         CurrentMood = MehMood[r.Next(0, MehMood.Length)];
+                        Nausea /= 2;
                     }
                     else
                     {
                         CurrentMood = GoodMood[r.Next(0, GoodMood.Length)];
+                        Nausea /= 4; // does high nausea AND low stress even happen?
                     }
                     StressCounter = -1;
                 }
@@ -576,29 +578,32 @@ namespace pax4props
             
             switch (iRequest)
             {
-                case 1:
+                case 1: // bank angle
                     Bank = (float)Math.Abs(dValue);
                     if (Bank > 30)
                     {
                         float _dis = (float)PaxFac;
+                        NauseaIncrease();
                         Stress(300);
                         if (Bank > 50)
                         {
                             _dis = 10.0f * (float)PaxFac;
                             Stress(310);
+                            NauseaIncrease();
                         }
-                        Discomfort += _dis; // TODO: check if Discomfort is necessary, why not just add the 2nd field of ComplainingAbout?
+                        Discomfort += _dis;
                         ComplainingAbout["bank"][0] += 1;
                         ComplainingAbout["bank"][1] += _dis;
                     }
 
                     break;
 
-                case 2:
+                case 2: //pitch angle
                     Pitch = (float)Math.Abs(dValue);
                     if (Pitch > 20)
                     {
                         float _dis = (float)PaxFac;
+                        NauseaIncrease();
                         Stress(300);
                         if (Pitch > 30)
                         {
@@ -612,7 +617,7 @@ namespace pax4props
 
                     break;
 
-                case 3:
+                case 3: // vertical speed
                     VerticalSpeed = (float)dValue;
                     if (VerticalSpeed <= VSUpLimit && VerticalSpeed >= VSDownLimit1)
                     {
@@ -654,7 +659,7 @@ namespace pax4props
                    
                     break;
 
-                case 4:
+                case 4: // AMSL
                     Altitude = (int)dValue;
                     if (Altitude > OxyLimit1)
                     {
@@ -681,12 +686,12 @@ namespace pax4props
                     }
                     break;
 
-                case 5:
+                case 5: // Ground speed
                     GroundSpeed = (float)dValue;
                     
                     break;
 
-                case 6:
+                case 6: // landing fpm
                     if (LandingFPM != (float)dValue)
                     {
                         LandingFPM = (float)dValue;
@@ -708,7 +713,7 @@ namespace pax4props
                     }
                     break;
 
-                case 7:
+                case 7: // propeller rpm
                     PropRPM = (float)dValue;
                     if (PropRPM > 98)
                     {
@@ -721,7 +726,7 @@ namespace pax4props
                     
                     break;
 
-                case 8:
+                case 8: // AGL
                     AltAboveGround = (int)dValue;                   
                     if (AltAboveGround < AGLComfortAlt)
                     {
@@ -744,7 +749,7 @@ namespace pax4props
                     }
                     break;
 
-                case 9:
+                case 9: // G force
                     GForce = (float)dValue;
 
                     if (GForce > 1.35f || GForce < 0.65f)
@@ -753,11 +758,12 @@ namespace pax4props
                         Discomfort += _dis;
                         ComplainingAbout["g-force"][0] += 1;
                         ComplainingAbout["g-force"][1] += _dis;
+                        NauseaIncrease();
                         Stress(110);
                     }
                     break;
 
-                case 10:
+                case 10: // vertical accel
                     VerticalAccel = dValue;
                     if (Math.Abs(PrevVerticalAccel - VerticalAccel) > 0.3) 
                     {
@@ -769,10 +775,10 @@ namespace pax4props
                     }
                     PrevVerticalAccel = VerticalAccel;
                     break;
-                case 11:
-
-               
+                
+                case 11:// inop
                     break;
+
                 case 12: //inop
                     
                     break;
@@ -780,7 +786,19 @@ namespace pax4props
                     break;
             }
 
-
+            void NauseaIncrease()
+            {
+                Nausea++;
+                if (Nausea > 6)
+                {
+                    if (r.Next(Nausea) > 5)
+                    {
+                        //TODO: stop all sounds
+                        //TODO: play vomit sound
+                        Nausea /= 2;
+                    }
+                }
+            }
         }
 
         public void ReceiveSimConnectMessage()
