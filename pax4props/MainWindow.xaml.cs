@@ -153,6 +153,7 @@ namespace pax4props
         private readonly MediaPlayer UISound = new MediaPlayer();
         private int Nausea = 0;
         private DateTime dtLastSound = DateTime.Now;
+        private MediaPlayer CurrentSound = new MediaPlayer();
 
         //TODO: Simrates?
 
@@ -198,15 +199,7 @@ namespace pax4props
             {Shout.Vomit, new MediaPlayer() }
         };
 
-        private bool StillPlaying(MediaPlayer MP)
-        {
-            if (MP.Position < MP.NaturalDuration && MP.Position > TimeSpan.Zero)
-            {
-                return true;
-            }
-            return false;
-        }
-
+       
         private string[] GetSoundName(Enum V)
         {         
             string[] ListAll = Directory.GetFiles($@"{BaseDir}\sounds", $"{DictPrefix[V]}1-*.wav");
@@ -330,33 +323,7 @@ namespace pax4props
 
             }
 
-            /*SoloSoundFiles[Shout.Wow][0].Open(TempUri);
-            SoloSoundFiles[Shout.Wow][0].Volume = _SoloVol;
-
-            string[] TempNames = GetSoundName(Shout.Complain);
-
-            for (var i=0; i< SoloSoundFiles[Shout.Complain].Length ; i++)
-            {
-                TempUri = new Uri(TempNames[i]);
-                SoloSoundFiles[Shout.Complain][i].Open(TempUri);
-                SoloSoundFiles[Shout.Complain][i].Volume = _SoloVol;
-            }
-
-            TempNames = GetSoundName(Shout.Panic);
-            for (var i = 0; i < SoloSoundFiles[Shout.Panic].Length; i++)
-            {
-                TempUri = new Uri(TempNames[i]);
-                SoloSoundFiles[Shout.Panic][i].Open(TempUri);
-                SoloSoundFiles[Shout.Panic][i].Volume = _SoloVol;
-            }
-            TempNames = GetSoundName(Shout.Vomit);
-            for (var i = 0; i< SoloSoundFiles[Shout.Vomit].Length; i++)
-            {
-                TempUri = new Uri(TempNames[i]);
-                SoloSoundFiles[Shout.Vomit][i].Open(TempUri);
-                SoloSoundFiles[Shout.Vomit][i].Volume = _SoloVol;
-            }
-            */
+           
             foreach (var _k in DictPrefix.Keys)
             {
                 string[] _ListAll = Directory.GetFiles($@"{BaseDir}\sounds", $"{DictPrefix[_k]}3-*.wav");
@@ -385,72 +352,48 @@ namespace pax4props
             var Rand = new Random();
             TimeSpan ts = DateTime.Now - dtLastSound;
 
-            void _PlaySound()
+            void _PlaySound(bool bCut = true)
             {
                 var _m = SoloSoundFiles[V][Rand.Next(SoloSoundFiles[V].Length)];
-                if (! StillPlaying(_m))
+                if (bCut)
                 {
-                    _m.Play();
+                    CurrentSound.Stop();
+                    CurrentSound = _m;
                 }
+                _m.Play(); 
+                
                 dtLastSound = DateTime.Now;
             }
 
-            if (V.Equals(Shout.Panic) && ts.TotalMilliseconds > 2100 && Nausea < 10)
+            if (V.Equals(Shout.Panic) )
             {
-                _PlaySound();
+                if (Nausea < 10 || Rand.NextDouble() < 0.1)
+                {
+                    _PlaySound();
+                }
             }
-            else if (V.Equals(Shout.Vomit) && ts.TotalMilliseconds > 3100)
+            else if (V.Equals(Shout.Vomit) && ts.TotalMilliseconds > 2100)
             {
                 _PlaySound();
                 Nausea /= 3;
             }
             else if (ts.TotalMilliseconds > 5100) // clearer than a complex IF statement with ORs
             {
-                _PlaySound();
+                _PlaySound(); // Wow or complaint
             }
      
             if (PAX > 1)
             {
                 if (Rand.Next(PAX * 10) > 12 && ts.TotalMilliseconds > 2000)
                 {
-                    _PlaySound();
+                    _PlaySound(false);
                 }
                 if (PAX > 7 && ts.TotalMilliseconds > 5000)
                 {
                     CrowdSoundFile[V].Play();
                 }
             }
-            /*
-            if (PAX > 1)
-            {
-                var _Media = SoloSoundFiles[V][Rand.Next(SoloSoundFiles[V].Length)];
-                if (!StillPlaying(_Media)) //if we've not chosen an already playing sound
-                {
-                    _Media.Play();
-                }
-                if (PAX >5 && ! StillPlaying(CrowdSoundFile[V]))
-                {
-                    CrowdSoundFile[V].Play();
-                }
-            }
             
-    
-            if (!StillPlaying(CurrentVoice) || (bOnlyConcerned && V.Equals(Shout.Panic)) ) //either silent or about to interrupt non-panic for panic
-            {
-                var _Media = SoloSoundFiles[V][Rand.Next(SoloSoundFiles[V].Length)];
-                CurrentVoice.Stop(); // in case a complain sound is still running, interrupt it for the panic scream
-                _Media.Play();
-                CurrentVoice = _Media;
-            }
-            if (V.Equals(Shout.Panic))
-            {
-                bOnlyConcerned = false;
-            }
-            else
-            {
-                bOnlyConcerned = true;
-            }
-            */
         }
 
 
@@ -995,7 +938,8 @@ namespace pax4props
                 MaxLandingFPM = -1;
                 UISound.Open(new Uri(BaseDir + "\\sounds\\beltclick.wav"));
                 UISound.Play();
-
+                Nausea = 0;
+                StressCounter = 0;
                 SPnlFlightType.IsEnabled = false;
                 if ((bool) CbBush.IsChecked)
                 {
