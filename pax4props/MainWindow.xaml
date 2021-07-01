@@ -16,7 +16,7 @@
     <Grid x:Name="mainGrid"  >
 
         <Button x:Name="BtnSettings"  Content="Settings" HorizontalAlignment="Left" Height="24" Margin="30,100,0,0" VerticalAlignment="Top" Width="110" Focusable="False" IsTabStop="False"  FontWeight="Bold" ToolTip="Inop." Click="BtnSettings_Click"/>
-        <Button x:Name="btnLog"  Content="Log" HorizontalAlignment="Left" Height="24" Margin="30,138,0,0" VerticalAlignment="Top" Width="110" Focusable="False" IsTabStop="False"  FontWeight="Bold" ToolTip="Inop." Click="BtnLog_Click"/>
+        <Button x:Name="btnLog"  Content="Log/Stats" HorizontalAlignment="Left" Height="24" Margin="30,138,0,0" VerticalAlignment="Top" Width="110" Focusable="False" IsTabStop="False"  FontWeight="Bold" ToolTip="Inop." Click="BtnLog_Click"/>
         <Button x:Name="btnFlight"  Content="Start flight" HorizontalAlignment="Left" Height="24" Margin="30,199,0,0" VerticalAlignment="Top" Width="110" Click="Button_Click" Focusable="False" IsTabStop="False"  FontWeight="Bold"/>
 
         <Label x:Name="lblStatus" Content="Not connected yet" HorizontalAlignment="Right" Margin="0,0,10,12" VerticalAlignment="Bottom" Width="110" Foreground="#FF888888" Height="26" Padding="0"/>

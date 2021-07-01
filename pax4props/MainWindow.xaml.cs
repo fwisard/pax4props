@@ -161,7 +161,8 @@ namespace pax4props
         {
             Wow,
             Complain,
-            Panic
+            Panic,
+            Vomit
         }
 
         
@@ -170,7 +171,8 @@ namespace pax4props
         {
             {Shout.Wow, "wow" },
             {Shout.Complain, "complain" },
-            {Shout.Panic, "panic" }
+            {Shout.Panic, "panic" },
+            {Shout.Vomit, "vomit" }
         };
 
         private readonly Dictionary<Enum, MediaPlayer[]> SoloSoundFiles = new Dictionary<Enum, MediaPlayer[]>
@@ -182,6 +184,10 @@ namespace pax4props
             { Shout.Panic, new MediaPlayer[] {
                 new MediaPlayer(), new MediaPlayer(), new MediaPlayer(), new MediaPlayer(), new MediaPlayer(), new MediaPlayer()
 
+            } },
+            { Shout.Vomit, new MediaPlayer[]
+            {
+                new MediaPlayer(), new MediaPlayer(), new MediaPlayer()
             } }
         };
 
@@ -189,7 +195,8 @@ namespace pax4props
         {
             {Shout.Wow, new MediaPlayer() },
             {Shout.Complain, new MediaPlayer() },
-            {Shout.Panic,new MediaPlayer() }
+            {Shout.Panic,new MediaPlayer() },
+            {Shout.Vomit, new MediaPlayer() }
         };
 
         private bool StillPlaying(MediaPlayer MP)
@@ -312,7 +319,19 @@ namespace pax4props
             Uri TempUri = new Uri(GetSoundName(Shout.Wow)[0]);
             float _SoloVol = Properties.Settings.Default.SoloVolume / 100.0f;
             float _GroupVol = Properties.Settings.Default.GroupVolume / 100.0f;
-            SoloSoundFiles[Shout.Wow][0].Open(TempUri);
+            
+            foreach (Enum e in DictPrefix.Keys) // load all reaction sounds
+            {
+                string[] TempNames = GetSoundName(e);
+                for (var i = 0; i < SoloSoundFiles[e].Length; i++)
+                {
+                    SoloSoundFiles[e][i].Open(new Uri(TempNames[i]));
+                    SoloSoundFiles[e][i].Volume = _SoloVol;
+                }
+
+            }
+
+            /*SoloSoundFiles[Shout.Wow][0].Open(TempUri);
             SoloSoundFiles[Shout.Wow][0].Volume = _SoloVol;
 
             string[] TempNames = GetSoundName(Shout.Complain);
@@ -331,7 +350,14 @@ namespace pax4props
                 SoloSoundFiles[Shout.Panic][i].Open(TempUri);
                 SoloSoundFiles[Shout.Panic][i].Volume = _SoloVol;
             }
-
+            TempNames = GetSoundName(Shout.Vomit);
+            for (var i = 0; i< SoloSoundFiles[Shout.Vomit].Length; i++)
+            {
+                TempUri = new Uri(TempNames[i]);
+                SoloSoundFiles[Shout.Vomit][i].Open(TempUri);
+                SoloSoundFiles[Shout.Vomit][i].Volume = _SoloVol;
+            }
+            */
             foreach (var _k in DictPrefix.Keys)
             {
                 string[] _ListAll = Directory.GetFiles($@"{BaseDir}\sounds", $"{DictPrefix[_k]}3-*.wav");
@@ -793,8 +819,7 @@ namespace pax4props
                 {
                     if (r.Next(Nausea) > 5)
                     {
-                        //TODO: stop all sounds
-                        //TODO: play vomit sound
+                        PlayRandomVoice(Shout.Vomit);
                         Nausea /= 2;
                     }
                 }
