@@ -150,10 +150,9 @@ namespace pax4props
         private int VSDownLimit2 = -1600;
         private int VSUpLimit = 1250;
         private readonly string BaseDir = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        private MediaPlayer CurrentVoice = new MediaPlayer();
         private readonly MediaPlayer UISound = new MediaPlayer();
-        private bool bOnlyConcerned = true;
         private int Nausea = 0;
+        private DateTime dtLastSound = DateTime.Now;
 
         //TODO: Simrates?
 
@@ -384,6 +383,44 @@ namespace pax4props
         private void PlayRandomVoice(Enum V)
         {
             var Rand = new Random();
+            TimeSpan ts = DateTime.Now - dtLastSound;
+
+            void _PlaySound()
+            {
+                var _m = SoloSoundFiles[V][Rand.Next(SoloSoundFiles[V].Length)];
+                if (! StillPlaying(_m))
+                {
+                    _m.Play();
+                }
+                dtLastSound = DateTime.Now;
+            }
+
+            if (V.Equals(Shout.Panic) && ts.TotalMilliseconds > 2100 && Nausea < 10)
+            {
+                _PlaySound();
+            }
+            else if (V.Equals(Shout.Vomit) && ts.TotalMilliseconds > 3100)
+            {
+                _PlaySound();
+                Nausea /= 3;
+            }
+            else if (ts.TotalMilliseconds > 5100) // clearer than a complex IF statement with ORs
+            {
+                _PlaySound();
+            }
+     
+            if (PAX > 1)
+            {
+                if (Rand.Next(PAX * 10) > 12 && ts.TotalMilliseconds > 2000)
+                {
+                    _PlaySound();
+                }
+                if (PAX > 7 && ts.TotalMilliseconds > 5000)
+                {
+                    CrowdSoundFile[V].Play();
+                }
+            }
+            /*
             if (PAX > 1)
             {
                 var _Media = SoloSoundFiles[V][Rand.Next(SoloSoundFiles[V].Length)];
@@ -413,6 +450,7 @@ namespace pax4props
             {
                 bOnlyConcerned = true;
             }
+            */
         }
 
 
@@ -815,12 +853,11 @@ namespace pax4props
             void NauseaIncrease()
             {
                 Nausea++;
-                if (Nausea > 6)
+                if (Nausea > 3)
                 {
-                    if (r.Next(Nausea) > 5)
+                    if (r.Next(Nausea) > 2)
                     {
                         PlayRandomVoice(Shout.Vomit);
-                        Nausea /= 2;
                     }
                 }
             }
