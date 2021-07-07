@@ -25,6 +25,8 @@ namespace pax4props
             sldrSoloSndVol.Value = Properties.Settings.Default.SoloVolume ;
             sldrGroupSndVol.Value = Properties.Settings.Default.GroupVolume ;
             cbCheckForUpdates.IsChecked = Properties.Settings.Default.CheckForUpdates;
+            cbDebug.IsChecked = Globals.IsDebugEnabled;
+
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -34,7 +36,9 @@ namespace pax4props
             Properties.Settings.Default.CheckForUpdates = cbCheckForUpdates.IsChecked.Value;
             Properties.Settings.Default.Save();
             Globals.IsNoiseEnabled = (bool)cbPropellerNoiseSim.IsChecked;
-            Globals.isHypoxemiaEnabled = (bool)cbHypoxemiaSim.IsChecked;
+            Globals.IsHypoxemiaEnabled = (bool)cbHypoxemiaSim.IsChecked;
+            Globals.IsDebugEnabled = (bool)cbDebug.IsChecked;
+
         }
     }
 }

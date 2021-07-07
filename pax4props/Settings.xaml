@@ -18,6 +18,7 @@
         <CheckBox x:Name="cbPropellerNoiseSim" Content="Propeller noise simulation" HorizontalAlignment="Left" Margin="30,260,0,0" VerticalAlignment="Top" IsChecked="True"/>
         <CheckBox x:Name="cbHypoxemiaSim" Content="Hypoxemia simulation" HorizontalAlignment="Left" Margin="30,280,0,0" VerticalAlignment="Top" IsChecked="True" ToolTip="Uncheck for pressurized airplanes or available portable oxygen supply."/>
         <Label Content="Non-permanent settings. Changes to the settings below won't be saved." HorizontalAlignment="Left" Margin="30,230,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cbDebug" Content="Debug info" HorizontalAlignment="Left" Margin="30,300,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

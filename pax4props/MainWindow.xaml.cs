@@ -62,7 +62,8 @@ namespace pax4props
     public static class Globals
     {
         public static bool IsNoiseEnabled = true;
-        public static bool isHypoxemiaEnabled = true;
+        public static bool IsHypoxemiaEnabled = true;
+        public static bool IsDebugEnabled = false;
     }
     public enum DUMMYENUM
     {
@@ -347,6 +348,7 @@ namespace pax4props
 
 #if DEBUG
             tbDebug.Visibility = Visibility.Visible;
+            Globals.IsDebugEnabled = true;
 #else
             tbDebug.Visibility = Visibility.Hidden;
 #endif
@@ -674,7 +676,7 @@ namespace pax4props
 
                 case 4: // AMSL
                     Altitude = (int)dValue;
-                    if (Globals.isHypoxemiaEnabled)
+                    if (Globals.IsHypoxemiaEnabled)
                     {
                         if (Altitude > OxyLimit1)
                         {
@@ -958,7 +960,14 @@ namespace pax4props
                 {
                     NoiseRPMPercent = 9999;
                 }
-
+                if (Globals.IsDebugEnabled)
+                {
+                    tbDebug.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    tbDebug.Visibility = Visibility.Hidden;
+                }
                 if ((bool) CbBush.IsChecked)
                 {
                     Properties.Settings.Default.Bush = true;
