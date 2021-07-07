@@ -1,10 +1,7 @@
 ![](./colorlogo.png)
 
 
-# pax4props BETA
-
-The software is still in beta phase, lacks features and still contains too many bugs to be considered for wider release. With your help however, it will soon be very enjoyable for 
-the greater public. The interface will also be improved, this is not the final design.
+# pax4props 
 
 ## Vision and goal
 
@@ -135,7 +132,7 @@ They should contain no specifics, keep in mind they should be compatible with al
 
 - Based on [minisimconnect](https://github.com/bertrandpsi/minisimconnect) by bertrandpsi.
 
-- Panic screams by [Volonda](https://freesound.org/people/Volonda/).
+- Some panic screams by [Volonda](https://freesound.org/people/Volonda/).
 
 - Additional code and art by fwisard.
 
