@@ -37,8 +37,8 @@
                 <DataGridTextColumn Header="PAX" Width="30" Binding="{Binding Pax}" />
                     <DataGridTextColumn Header="Type" Width="60" Binding="{Binding FlightType}" />
                     <DataGridTextColumn Header="Score" Width="50" Binding="{Binding Score, StringFormat={}{0:F1}}" />
-                <DataGridTextColumn Header="Landing" Width="60" Binding="{Binding MaxFpm, StringFormat={}{0:F1}}" />
-                <DataGridTextColumn Header="Remarks" Width="300" Binding="{Binding Remarks}" />
+                <DataGridTextColumn Header="Landing FPM" Width="80" Binding="{Binding MaxFpm, StringFormat={}{0:F1}}" />
+                <DataGridTextColumn Header="Remarks" Width="340" Binding="{Binding Remarks}" />
             </DataGrid.Columns>
         </DataGrid>
         </Grid>

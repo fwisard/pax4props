@@ -13,8 +13,10 @@
         <Slider x:Name="sldrGroupSndVol" HorizontalAlignment="Left" Margin="170,90,0,0" VerticalAlignment="Top" Width="200" Maximum="100" Value="50" SmallChange="1" AutoToolTipPlacement="TopLeft" TickFrequency="5" LargeChange="5"/>
         <Label Content="Group voices volume:" HorizontalAlignment="Left" Margin="30,82,0,0" VerticalAlignment="Top"/>
         
-        <CheckBox x:Name="cbCheckForUpdates" Content="Check for updates online." HorizontalAlignment="Left" Margin="30,175,0,0" VerticalAlignment="Top" ToolTip="Check once at launch, minimal data transfer" IsChecked="True"/>
-        <Label Content="Changes will take effect the next time you launch pax4props." HorizontalAlignment="Left" Margin="30,340,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cbCheckForUpdates" Content="Check for updates online." HorizontalAlignment="Left" Margin="30,120,0,0" VerticalAlignment="Top" ToolTip="Check once at launch, minimal data transfer" IsChecked="True"/>
+        <Label Content="The changes above will take effect the next time you launch pax4props." HorizontalAlignment="Left" Margin="30,135,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cbPropellerNoiseSim" Content="Propeller noise simulation" HorizontalAlignment="Left" Margin="30,260,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="cbHypoxemiaSim" Content="Hypoxemia simulation" HorizontalAlignment="Left" Margin="30,280,0,0" VerticalAlignment="Top" IsChecked="True" ToolTip="Uncheck for pressurized airplanes or available portable oxygen supply."/>
 
     </Grid>
 </Window>

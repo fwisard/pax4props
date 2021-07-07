@@ -13,6 +13,5 @@ namespace pax4props
     /// </summary>
     public partial class App : Application
     {
-       
     }
 }

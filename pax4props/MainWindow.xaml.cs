@@ -59,6 +59,11 @@ namespace pax4props
         public static SQLiteConnection conn = new SQLiteConnection($@"Data Source={SaveDir}\{_name};Compress=True;");
 
     }
+    public static class Globals
+    {
+        public static bool IsNoiseEnabled = true;
+        public static bool isHypoxemiaEnabled = true;
+    }
     public enum DUMMYENUM
     {
         Dummy = 0
@@ -154,6 +159,7 @@ namespace pax4props
         private int Nausea = 0;
         private DateTime dtLastSound = DateTime.Now;
         private MediaPlayer CurrentSound = new MediaPlayer();
+        private int NoiseRPMPercent = 98;
 
         //TODO: Simrates?
 
@@ -668,28 +674,31 @@ namespace pax4props
 
                 case 4: // AMSL
                     Altitude = (int)dValue;
-                    if (Altitude > OxyLimit1)
+                    if (Globals.isHypoxemiaEnabled)
                     {
-                        float _dis;
-                        _dis = 0.0017f * (float)PaxFac ; // 0.1 per min
-                        if (Altitude > OxyLimit2)
+                        if (Altitude > OxyLimit1)
                         {
-                            Stress(140);
-                            _dis = 0.1f * (float)PaxFac ;
-                            if (Altitude > OxyLimit3)
+                            float _dis;
+                            _dis = 0.0017f * (float)PaxFac; // 0.1 per min
+                            if (Altitude > OxyLimit2)
                             {
-                                _dis = 2.0f * (float)PaxFac ;
-                                Stress(300);
-                                if (Altitude >= 18000)
+                                Stress(140);
+                                _dis = 0.1f * (float)PaxFac;
+                                if (Altitude > OxyLimit3)
                                 {
-                                    _dis = 10.0f * (float)PaxFac ;
-                                    Stress(300); // "In space nobody can hear you scream..."
+                                    _dis = 2.0f * (float)PaxFac;
+                                    Stress(300);
+                                    if (Altitude >= 18000)
+                                    {
+                                        _dis = 10.0f * (float)PaxFac;
+                                        Stress(300); // "In space nobody can hear you scream..."
+                                    }
                                 }
                             }
+                            Discomfort += _dis;
+                            ComplainingAbout["oxygen"][0] += 1;
+                            ComplainingAbout["oxygen"][1] += _dis;
                         }
-                        Discomfort += _dis;
-                        ComplainingAbout["oxygen"][0] += 1;
-                        ComplainingAbout["oxygen"][1] += _dis;
                     }
                     break;
 
@@ -722,7 +731,7 @@ namespace pax4props
 
                 case 7: // propeller rpm
                     PropRPM = (float)dValue;
-                    if (PropRPM > 98)
+                    if (PropRPM > NoiseRPMPercent)
                     {
                         float _dis = 0.017f * (float)PaxFac; // 1/min
                         Discomfort += _dis;
@@ -941,6 +950,15 @@ namespace pax4props
                 Nausea = 0;
                 StressCounter = 0;
                 SPnlFlightType.IsEnabled = false;
+                if (Globals.IsNoiseEnabled)
+                {
+                    NoiseRPMPercent = 98;
+                }
+                else
+                {
+                    NoiseRPMPercent = 9999;
+                }
+
                 if ((bool) CbBush.IsChecked)
                 {
                     Properties.Settings.Default.Bush = true;

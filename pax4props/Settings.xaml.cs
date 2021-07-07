@@ -33,6 +33,8 @@ namespace pax4props
             Properties.Settings.Default.GroupVolume = (int)sldrGroupSndVol.Value;
             Properties.Settings.Default.CheckForUpdates = cbCheckForUpdates.IsChecked.Value;
             Properties.Settings.Default.Save();
+            Globals.IsNoiseEnabled = (bool)cbPropellerNoiseSim.IsChecked;
+            Globals.isHypoxemiaEnabled = (bool)cbHypoxemiaSim.IsChecked;
         }
     }
 }
