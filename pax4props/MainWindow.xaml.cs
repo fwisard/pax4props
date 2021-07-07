@@ -351,6 +351,7 @@ namespace pax4props
             Globals.IsDebugEnabled = true;
 #else
             tbDebug.Visibility = Visibility.Hidden;
+            Globals.IsDebugEnabled = false;
 #endif
 
         }
