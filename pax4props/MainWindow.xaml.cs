@@ -1082,4 +1082,3 @@ namespace pax4props
         }
     }
 }
-// TODO: vomit effects...
