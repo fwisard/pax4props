@@ -264,63 +264,46 @@ namespace pax4props
             {
                 Num = 3;
             }
+            for (var i = 0; i< Num; i++)
+            {
+                switch(NumberOfStars)
+                {
+                    case 5:
+                        VeryGoodReview();
+                        break;
 
-            if (NumberOfStars > 3)
-            {
-                for (int i = 0; i < Num; i++)
-                {
-                    tbQuotes.Text += GoodReview[Rnd.Next(0, GoodReview.Length)] + Signature() + "\n";
-                }
-            }
-            else if (NumberOfStars < 3)
-            {
-                for (int i = 0; i < Num; i++)
-                {
-                    
-                    if (ComplainingAbout["low alt"][1] > 14.0f && Rnd.Next(100) < 15) 
-                    {
-                        tbQuotes.Text += BadLow[Rnd.Next(0, BadLow.Length)];
-                    }
-                    else if (MaxLandingFPM > 300 && Rnd.Next(100) < 15)
-                    {
-                        tbQuotes.Text += BadLanding[Rnd.Next(0, BadLanding.Length)];
-                    }
-                    else if (ComplainingAbout["noise"][0] > 240 && Discomfort - ComplainingAbout["noise"][1] < 25) //240 instead of 300 because some PAX have lower limits than others.
-                    {
-                        tbQuotes.Text += BadNoise[Rnd.Next(0, BadNoise.Length)];
-                    }
-                    else
-                    {
-                        tbQuotes.Text += BadReview[Rnd.Next(0, BadReview.Length)];
-                    }
-                    tbQuotes.Text += Signature() + "\n";
+                    case 4:
+                        if (Rnd.NextDouble()> 0.2)
+                        {
+                            VeryGoodReview();
+                        }
+                        else
+                        {
+                            MehReview();
+                        }
+                        break;
 
+                    case 3:
+                        MehReview();
+                        break;
+
+                    case 2:
+                        if (Rnd.NextDouble() > 0.2)
+                        {
+                            VeryBadReview();
+                        }
+                        else
+                        {
+                            MehReview();
+                        }
+                        break;
+
+                    default:
+                        VeryBadReview();
+                        break;
                 }
             }
-            else // 3 stars, meh
-            {
-                tbQuotes.Text += OKReview[Rnd.Next(0, OKReview.Length)] + Signature() + "\n";
-                if (Num > 1 && Rnd.Next(100) <50)
-                {
-                    if (ComplainingAbout["low alt"][1] > 14.0f && Rnd.Next(100) < 25)
-                    {
-                        tbQuotes.Text += BadLow[Rnd.Next(0, BadLow.Length)];
-                    }
-                    else if (MaxLandingFPM > 300 && Rnd.Next(100) < 55)
-                    {
-                        tbQuotes.Text += BadLanding[Rnd.Next(0, BadLanding.Length)];
-                    }
-                    else if (ComplainingAbout["noise"][0] > 280 && Rnd.Next(100) < 40)
-                    {
-                        tbQuotes.Text += BadNoise[Rnd.Next(0, BadNoise.Length)];
-                    }
-                    else
-                    {
-                        tbQuotes.Text = OKReview[Rnd.Next(0, OKReview.Length)];
-                    }
-                    tbQuotes.Text += Signature() + "\n";
-                }
-            }
+            
             try // log the flight
             {
                 db.conn.Open();
@@ -363,6 +346,67 @@ namespace pax4props
             catch (Exception Ex)
             {
                 System.Windows.MessageBox.Show(this, Ex.Message,"Error",MessageBoxButton.OK,MessageBoxImage.Error);
+            }
+
+            void VeryGoodReview()
+            {
+                
+                tbQuotes.Text += GoodReview[Rnd.Next(0, GoodReview.Length)] + Signature() + "\n";
+
+            }
+
+            void VeryBadReview()
+            {
+
+
+                if (ComplainingAbout["low alt"][1] > 14.0f && Rnd.Next(100) < 15)
+                {
+                    tbQuotes.Text += BadLow[Rnd.Next(0, BadLow.Length)];
+                }
+                else if (MaxLandingFPM > 300 && Rnd.Next(100) < 15)
+                {
+                    tbQuotes.Text += BadLanding[Rnd.Next(0, BadLanding.Length)];
+                }
+                else if (ComplainingAbout["noise"][0] > 240 && Discomfort - ComplainingAbout["noise"][1] < 25) //240 instead of 300 because some PAX have lower limits than others.
+                {
+                    tbQuotes.Text += BadNoise[Rnd.Next(0, BadNoise.Length)];
+                }
+                else
+                {
+                    tbQuotes.Text += BadReview[Rnd.Next(0, BadReview.Length)];
+                }
+                tbQuotes.Text += Signature() + "\n";
+
+
+            }
+
+            void MehReview()
+            {
+                
+                if (Num > 1 && Rnd.Next(100) < 50)
+                {
+                    if (ComplainingAbout["low alt"][1] > 14.0f && Rnd.Next(100) < 25)
+                    {
+                        tbQuotes.Text += BadLow[Rnd.Next(0, BadLow.Length)];
+                    }
+                    else if (MaxLandingFPM > 300 && Rnd.Next(100) < 55)
+                    {
+                        tbQuotes.Text += BadLanding[Rnd.Next(0, BadLanding.Length)];
+                    }
+                    else if (ComplainingAbout["noise"][0] > 280 && Rnd.Next(100) < 40)
+                    {
+                        tbQuotes.Text += BadNoise[Rnd.Next(0, BadNoise.Length)];
+                    }
+                    else
+                    {
+                        tbQuotes.Text = OKReview[Rnd.Next(0, OKReview.Length)];
+                    }
+                    tbQuotes.Text += Signature() + "\n";
+                }
+                else
+                {
+                    tbQuotes.Text += OKReview[Rnd.Next(0, OKReview.Length)] + Signature() + "\n";
+                }
             }
         }
 
