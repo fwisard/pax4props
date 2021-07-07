@@ -109,7 +109,6 @@ Planned features, without any guarantee or timeline:
 4. Export data
 5. Parachuting (for the passengers only. You will have to stay on board).
 6. Helicopters?
-7. URGENT: group voices
 8. Language selection for voices?
 8. more voiced reactions?
 9. Automatic detection of PAX aboard plane. Might not always work for some third-party aircraft though.

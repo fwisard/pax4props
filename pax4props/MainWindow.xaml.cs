@@ -468,7 +468,7 @@ namespace pax4props
                 {
                     tbDebug.Text += $"{key}:{ComplainingAbout[key][1]:F1} ";
                 }
-                tbDebug.Text += $"\nStress:{StressCounter}, Discomfort:{Discomfort:F1}";
+                tbDebug.Text += $"\nStress:{StressCounter}, Discomfort:{Discomfort:F1}, Nausea:{Nausea}";
                 
 #endif
             }
@@ -708,7 +708,7 @@ namespace pax4props
                     break;
 
                 case 6: // landing fpm
-                    if (LandingFPM != (float)dValue)
+                    if (LandingFPM != (float)dValue) //new landing value
                     {
                         LandingFPM = (float)dValue;
                         float _dis;
