@@ -340,8 +340,8 @@ namespace pax4props
             }
             System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
 
-            AutoUpdater.HttpUserAgent = "pax4props AutoUpdater";
-            if (Properties.Settings.Default.CheckForUpdates.Equals(true))
+            AutoUpdater.HttpUserAgent = "pax4propsAutoUpdater";
+            if (Properties.Settings.Default.CheckForUpdates)
             {
                 AutoUpdater.Start("http://github.com/fwisard/pax4props/pax4props/updater.xml"); 
             }
@@ -465,15 +465,16 @@ namespace pax4props
                     StressCounter = -1;
                 }
                 tbPAXStatus.Text = PAXStatusPrefix + CurrentMood;
-#if DEBUG
-                tbDebug.Text = "";
-                foreach (var key in ComplainingAbout.Keys)
+                if (Globals.IsDebugEnabled)
                 {
-                    tbDebug.Text += $"{key}:{ComplainingAbout[key][1]:F1} ";
+                    tbDebug.Text = "";
+                    foreach (var key in ComplainingAbout.Keys)
+                    {
+                        tbDebug.Text += $"{key}:{ComplainingAbout[key][1]:F1} ";
+                    }
+                    tbDebug.Text += $"\nStress:{StressCounter}, Discomfort:{Discomfort:F1}, Nausea:{Nausea}";
                 }
-                tbDebug.Text += $"\nStress:{StressCounter}, Discomfort:{Discomfort:F1}, Nausea:{Nausea}";
                 
-#endif
             }
         }
 
